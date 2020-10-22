@@ -7,13 +7,13 @@ import wx
 class MyWindow(wx.Frame):
 
     def __init__(self):
-        super(MyWindow, self).__init__(parent=None, id=wx.ID_ANY)
-        sizer = wx.BoxSizer(wx.VERTICAL)
-        self.SetSizer(sizer)
+        super(wx.Frame, self).__init__(parent=None, id=wx.ID_ANY)
 
         figure = self.gen_example_chart()
         canvas = FigureCanvas(self, -1, figure)
+        sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(canvas, 1, wx.LEFT | wx.TOP | wx.GROW)
+        self.SetSizer(sizer)
         self.Fit()
 
     def gen_example_chart(self):
@@ -31,7 +31,7 @@ class MyWindow(wx.Frame):
         # spc chart
         fig = plt.figure(dpi=100)
         ax = fig.add_subplot(111, title="SPC Chart Example")
-        plt.subplots_adjust(left=0.2, right=0.8)
+        plt.subplots_adjust(bottom=0.2, left=0.2, right=0.8, top=0.9)
         ax.grid(True)
 
         # horizontal lines
@@ -53,7 +53,7 @@ class MyWindow(wx.Frame):
         # label
         labels = [item.get_text() for item in ax.get_yticklabels()]
         n = len(labels)
-        labels[n - 3] = 'LSL = ' + str(spec_usl)
+        labels[n - 3] = 'LSL = ' + str(spec_lsl)
         labels[n - 2] = 'Target = ' + str(spec_target)
         labels[n - 1] = 'USL = ' + str(spec_usl)
         ax.set_yticklabels(labels)
