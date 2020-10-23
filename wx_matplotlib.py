@@ -7,7 +7,7 @@ import wx
 class MyWindow(wx.Frame):
 
     def __init__(self):
-        super(wx.Frame, self).__init__(parent=None, id=wx.ID_ANY)
+        super().__init__(parent=None, id=wx.ID_ANY)
 
         figure = self.gen_example_chart()
         canvas = FigureCanvas(self, -1, figure)
