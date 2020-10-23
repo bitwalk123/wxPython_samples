@@ -1,7 +1,9 @@
 import wx
 import wx.lib.agw.buttonpanel as BP
 
-
+# reference
+# https://wxpython.org/Phoenix/docs/html/wx.lib.agw.buttonpanel.ButtonPanel.html
+# https://wxpython.org/Phoenix/docs/html/wx.lib.agw.buttonpanel.ButtonInfo.html
 class MyWindow(wx.Frame):
 
     def __init__(self):
@@ -9,20 +11,20 @@ class MyWindow(wx.Frame):
         sizer = wx.BoxSizer(wx.VERTICAL)
         self.SetSizer(sizer)
 
-        bpnl = BP.ButtonPanel(self, -1, 'ButtonPanel')
-        sizer.Add(bpnl, 0, wx.EXPAND)
+        bpanel = BP.ButtonPanel(self, text='ButtonPanel')
+        sizer.Add(bpanel, 0, wx.EXPAND)
 
-        but1 = BP.ButtonInfo(bpnl, wx.ID_ANY, wx.Bitmap('png1.png', wx.BITMAP_TYPE_PNG))
+        but1 = BP.ButtonInfo(bpanel, wx.ID_ANY, wx.Bitmap('png1.png', wx.BITMAP_TYPE_PNG))
         but1.SetText('icon 1')
-        bpnl.AddButton(but1)
+        bpanel.AddButton(but1)
         self.Bind(wx.EVT_BUTTON, self.OnButton, but1)
 
-        but2 = BP.ButtonInfo(bpnl, wx.ID_ANY, wx.Bitmap('png2.png', wx.BITMAP_TYPE_PNG))
+        but2 = BP.ButtonInfo(bpanel, wx.ID_ANY, wx.Bitmap('png2.png', wx.BITMAP_TYPE_PNG))
         but2.SetText('icon 2')
-        bpnl.AddButton(but2)
+        bpanel.AddButton(but2)
         self.Bind(wx.EVT_BUTTON, self.OnButton, but2)
 
-        bpnl.DoLayout()
+        bpanel.DoLayout()
         sizer.Layout()
 
 
